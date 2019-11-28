@@ -4,7 +4,9 @@
   "description": "Diseño Web usando VueJS",
   "main": "index.js",
   "scripts": {
-    "test": "npm"
+    "dev": "nodemon ./index",
+    "watch": "webpack --w --mode development",
+    "start": "concurrently \"npm run dev\" \"npm run watch\""
   },
   "repository": {
     "type": "git",
@@ -20,14 +22,17 @@
   },
   "homepage": "https://github.com/Proyecto-Seminario-Sowftware/frontendTienda#readme",
   "dependencies": {
+    "concurrently": "^5.0.0",
     "express": "^4.17.1",
-    "nodemon": "^2.0.1",
     "vue": "^2.6.10"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "babel-loader": "^8.0.6",
+    "nodemon": "^2.0.1",
+    "vue-loader": "^15.7.2",
+    "vue-template-compiler": "^2.6.10",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   }
