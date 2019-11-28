@@ -1,0 +1,22 @@
+{
+  "name": "frontendtienda",
+  "version": "1.0.0",
+  "description": "Diseño Web usando VueJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Proyecto-Seminario-Sowftware/frontendTienda.git"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Luis Dario y Norman Altamirano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Proyecto-Seminario-Sowftware/frontendTienda/issues"
+  },
+  "homepage": "https://github.com/Proyecto-Seminario-Sowftware/frontendTienda#readme"
+}
