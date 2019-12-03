@@ -23,7 +23,7 @@
               <input type="password" name placeholder="Ingresa tu contraseña" />
             </div>
 
-            <button class="btn btn-box">Crear Cuenta</button>
+            <button>Crear Cuenta</button>
           </div>
         </form>
       </div>

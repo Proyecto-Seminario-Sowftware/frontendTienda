@@ -18,7 +18,7 @@
               <input type="password" name placeholder="Ingresa tu contraseña" />
             </div>
 
-            <button class="btn btn-box">Iniciar Sesión</button>
+            <button>Iniciar Sesión</button>
 
             <router-link to="/crearCuenta">
               <p>No tienes cuenta</p>Registrate
