@@ -20,11 +20,13 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue")
   },
   {
+    // Ruta de iniciar sesion
     path: "/iniciarSesion",
     name: "iniciarSesion",
     component: () => import("../views/IniciarSesion.vue")
   },
   {
+    // Ruta para crear cuenta al usuario
     path: "/crearCuenta",
     name: "crearCuenta",
     component: () => import("../views/CrearCuenta.vue")
