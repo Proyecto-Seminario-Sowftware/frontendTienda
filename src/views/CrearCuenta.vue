@@ -2,6 +2,7 @@
   <div id="crearCuenta">
     <div class="container main-container">
       <div class="col-md-6">
+        <!-- Formulario para crear un nuevo usuario -->
         <form @submit.prevent="agregarUsuario()">
           <div>
             <h1>Crea Tu Cuenta</h1>
@@ -32,7 +33,7 @@
             <div class="input-contact">
               <input
                 type="password"
-                name
+                name="password"
                 placeholder="Ingresa tu contraseña"
                 v-model="usuario.password"
               />
@@ -41,6 +42,7 @@
             <button type="submit">Crear usuario</button>
           </div>
         </form>
+        <!-- Final de la etiqueta form -->
       </div>
     </div>
     <!-- <router-view /> -->
@@ -49,6 +51,7 @@
 
 <script>
 import { log } from "util";
+import router from "../router";
 export default {
   data() {
     return {
@@ -59,15 +62,16 @@ export default {
   },
   methods: {
     agregarUsuario() {
-      console.log(this.usuario);
+      // console.log(this.usuario);
 
       this.axios
         .post("/nuevoUsuario", this.usuario)
         .then(res => {
           this.usuarios.push(res.data);
-          this.usuario.nombre = "";
-          this.usuario.email = "";
-          this.usuario.password = "";
+          // this.usuario.nombre = "";
+          // this.usuario.email = "";
+          // this.usuario.password = "";
+          router.push("/");
         })
         .catch(e => {});
     }
