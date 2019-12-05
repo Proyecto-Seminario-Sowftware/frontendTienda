@@ -39,7 +39,7 @@
               />
             </div>
 
-            <button type="submit">Crear usuario</button>
+            <button v-on:click="showAlert" type="submit">Crear usuario</button>
           </div>
         </form>
         <!-- Final de la etiqueta form -->
@@ -52,6 +52,7 @@
 <script>
 import { log } from "util";
 import router from "../router";
+
 export default {
   data() {
     return {
@@ -68,12 +69,17 @@ export default {
         .post("/nuevoUsuario", this.usuario)
         .then(res => {
           this.usuarios.push(res.data);
-          // this.usuario.nombre = "";
-          // this.usuario.email = "";
-          // this.usuario.password = "";
-          router.push("/");
+          this.usuario.nombre = "";
+          this.usuario.email = "";
+          this.usuario.password = "";
         })
         .catch(e => {});
+    },
+    showAlert() {
+      this.$swal({
+        icon: "success",
+        title: "Tus datos han sido registrados"
+      });
     }
   }
 };
