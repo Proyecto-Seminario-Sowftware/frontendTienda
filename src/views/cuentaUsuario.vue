@@ -24,12 +24,11 @@
     <main>
       <div class="lista-producto contenedor">
         <div class="producto" v-for="(item, index) in productos" :key="index">
-          <div :style="{ 'background-image': 'url(' + '/uploads/' + item.image + ')' }"></div>
-
           <div class="texto">
             <p class="contenido">{{item.nombre}}</p>
             <p class="contenido">L. {{item.precio}}</p>
           </div>
+          <router-link v-bind:to="'/detalleProducto/'+ item._id">Ver</router-link>
         </div>
       </div>
     </main>
