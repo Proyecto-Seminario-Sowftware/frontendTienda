@@ -33,6 +33,7 @@ body {
   height: 100%;
   font-family: "Poppins", sans-serif;
   line-height: 1.8;
+  font-size: 1.3em;
   color: #999;
 }
 
@@ -108,7 +109,7 @@ input {
 
 button {
   background: #ffbf00;
-  padding: 10px 50px;
+  padding: 5px 5px;
   border-radius: 28x;
   color: #000000;
   font-size: 14px;
@@ -118,6 +119,54 @@ button {
   font-weight: 500;
   text-decoration: none;
 }
+
+/* Mostar imagenes */
+
+.contenedor {
+  max-width: 1300px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.lista-producto {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .lista-producto {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.producto img {
+  max-width: 100%;
+  align-items: center;
+}
+
+.producto:hover {
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
+
+.producto {
+  background-color: #b8b8b6;
+  padding: 1rem;
+}
+
+.texto p {
+  color: #000000;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 1.2;
+  margin: 1rem 0;
+}
+
+.texto .contenido {
+  font-size: 1.4rem;
+}
+
 /* preloader
 ==================================================*/
 

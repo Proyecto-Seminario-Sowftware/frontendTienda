@@ -57,8 +57,7 @@ export default {
   data() {
     return {
       usuarios: [],
-      usuario: { nombre: "", email: "", password: "" },
-      agregar: true
+      usuario: { nombre: "", email: "", password: "" }
     };
   },
   methods: {
@@ -77,7 +76,7 @@ export default {
     },
     showAlert() {
       this.$swal({
-        icon: "success",
+        type: "success",
         title: "Tus datos han sido registrados"
       });
     }

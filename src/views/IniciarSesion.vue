@@ -50,7 +50,7 @@ export default {
           .post("/login", data)
           .then(response => {
             console.log("Haz iniciado sesion");
-            router.push("/about");
+            router.push("/cuentaUsuario");
           })
           .catch(erros => {
             console.log("No has inicado sesion");

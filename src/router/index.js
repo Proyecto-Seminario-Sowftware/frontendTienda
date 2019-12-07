@@ -30,6 +30,16 @@ const routes = [
     path: "/crearCuenta",
     name: "crearCuenta",
     component: () => import("../views/CrearCuenta.vue")
+  },
+  {
+    path: "/cuentaUsuario",
+    name: "cuentaUsuario",
+    component: () => import("../views/cuentaUsuario.vue")
+  },
+  {
+    path: "/crearProducto",
+    name: "crearProducto",
+    component: () => import("../views/crearProducto.vue")
   }
 ];
 
