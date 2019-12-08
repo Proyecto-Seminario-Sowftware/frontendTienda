@@ -12,7 +12,7 @@
                   <router-link to="/crearProducto">Crear Producto</router-link>
                 </li>
                 <li>
-                  <router-link to>Cerrar Sesión</router-link>
+                  <a href v-on:click="cerrarSesion">Cerrar Sesión</a>
                 </li>
               </ul>
             </nav>
@@ -24,6 +24,7 @@
     <main>
       <div class="lista-producto contenedor">
         <div class="producto" v-for="(item, index) in productos" :key="index">
+          <img :src="item.imagen" alt="imagen" />
           <div class="texto">
             <p class="contenido">{{item.nombre}}</p>
             <p class="contenido">L. {{item.precio}}</p>
@@ -37,6 +38,8 @@
 
 
 <script>
+import router from "../router";
+import axios from "axios";
 export default {
   data() {
     return {
@@ -58,6 +61,11 @@ export default {
         .catch(e => {
           console.log(e.response);
         });
+    },
+    cerrarSesion: function(e) {
+      axios.get("/cerrarSesion").then(() => {
+        this.$router.push("/");
+      });
     }
   }
 };

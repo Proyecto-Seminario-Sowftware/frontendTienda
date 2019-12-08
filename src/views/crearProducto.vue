@@ -62,12 +62,14 @@ export default {
           this.producto.nombre = "";
           this.producto.precio = 0;
         })
+
         .catch(e => {});
 
       const formData = new FormData();
       formData.append("imagen", this.file);
       this.axios.post("/nuevoProducto", formData);
       this.file = "";
+      this.$router.push("/cuentaUsuario");
     },
     showAlert() {
       this.$swal({

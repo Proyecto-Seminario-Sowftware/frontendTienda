@@ -64,6 +64,7 @@ export default {
     agregarUsuario() {
       // console.log(this.usuario);
 
+      // Crear un nuevo usuario
       this.axios
         .post("/nuevoUsuario", this.usuario)
         .then(res => {
@@ -71,8 +72,11 @@ export default {
           this.usuario.nombre = "";
           this.usuario.email = "";
           this.usuario.password = "";
+          this.$router.push("/iniciarSesion");
         })
         .catch(e => {});
+      // Redireccionar
+      this.$router.push("/iniciarSesion");
     },
     showAlert() {
       this.$swal({
