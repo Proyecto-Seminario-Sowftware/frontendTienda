@@ -14,6 +14,9 @@
                 <li>
                   <a href v-on:click="cerrarSesion">Cerrar Sesión</a>
                 </li>
+                <li>
+                  <p>{{usuario.nombre}}</p>
+                </li>
               </ul>
             </nav>
           </div>
@@ -44,13 +47,15 @@ export default {
   data() {
     return {
       productos: [],
-      mostrar: false
+      mostrar: false,
+      usuario: { nombre: "" }
     };
   },
   created() {
     this.listarProductos();
   },
   methods: {
+    // Metodo de listar todos los productos
     listarProductos() {
       this.axios
         .get("/mostrarProductos")
@@ -62,10 +67,26 @@ export default {
           console.log(e.response);
         });
     },
+    // Metodo de cerrar
     cerrarSesion: function(e) {
       axios.get("/cerrarSesion").then(() => {
         this.$router.push("/");
       });
+    },
+    // Mostrar el usuario autenticado
+    mostrarUsuario: function() {
+      let self = this.axios
+        .get("/usuarioAutencidado")
+        .then(res => {
+          console.log(res);
+          self.$set(this, "nombre", res.data.usuario);
+        })
+        .catch(err => {
+          {
+            console.log(err);
+            router.push("/");
+          }
+        });
     }
   }
 };

@@ -28,8 +28,7 @@
             <label for>Imagen:</label>
             <div>
               <input type="file" ref="imagen" name="imagen" @change="enviarImagen" />
-
-              <!-- <img src="/uploads" class="perfil" /> -->
+              <img src="/uploads" class="perfil" />
 
               <button v-on:click="showAlert" type="submit">Crear Producto</button>
             </div>

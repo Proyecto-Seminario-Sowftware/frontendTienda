@@ -5,8 +5,18 @@
 
       <div class="col-md-6">
         <form @submit.prevent="listarProducto()">
-          <input v-model="productoMostrar.nombre" />
-          <p v-show="productoMostrar.nombre"></p>
+          <br />
+          <p>{{productoMostrar.nombre}}</p>
+          <br />
+          <p>L. {{productoMostrar.precio}}</p>
+          <br />
+          <p>{{productoMostrar.descripcion}}</p>
+          <img :src="productoMostrar.imagen" alt="producto" />
+
+          <div class="acciones">
+            <router-link v-bind:to="'/editarProducto/'+productoMostrar._id">Editar</router-link>
+          </div>
+          <router-view />
         </form>
       </div>
     </div>
