@@ -25,10 +25,14 @@
                 v-model="producto.precio"
               />
             </div>
+            <label for>Descripción</label>
+            <div>
+              <textarea name id cols="30" rows="10" v-model="producto.descripcion"></textarea>
+            </div>
             <label for>Imagen:</label>
             <div>
               <input type="file" ref="imagen" name="imagen" @change="enviarImagen" />
-              <img src="/uploads" class="perfil" />
+              <img :src="'/uploads/'+ file" class="perfil" />
 
               <button v-on:click="showAlert" type="submit">Crear Producto</button>
             </div>
@@ -44,7 +48,7 @@ export default {
     return {
       productos: [],
       file: "",
-      producto: { nombre: "", precio: 0 }
+      producto: { nombre: "", precio: 0, descripcion: "" }
     };
   },
   methods: {
@@ -60,6 +64,7 @@ export default {
           this.productos.push(res.data);
           this.producto.nombre = "";
           this.producto.precio = 0;
+          this.productos.descripcion = "";
         })
 
         .catch(e => {});

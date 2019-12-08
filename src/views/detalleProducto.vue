@@ -16,6 +16,8 @@
           <div class="acciones">
             <router-link v-bind:to="'/editarProducto/'+productoMostrar._id">Editar</router-link>
           </div>
+          <button type="submit" @click="eliminarProducto(productoMostrar._id)">Eliminar</button>
+          <div></div>
           <router-view />
         </form>
       </div>
@@ -35,6 +37,7 @@ export default {
     this.listarProducto();
   },
   methods: {
+    // Listar el producto
     listarProducto() {
       var id = this.$route.params.id;
       this.axios
@@ -46,6 +49,19 @@ export default {
         .catch(e => {
           console.log(e.response);
         });
+    },
+    // Metodo para eliminar el producto
+    eliminarProducto(id) {
+      this.axios
+        .delete(`/eliminarProducto/${id}`)
+        .then(res => {
+          const index = this.producto.findIndex(
+            item => item._id === res.data._id
+          );
+          this.producto.splice(index, 3);
+        })
+        .catch(e => {});
+      this.$router.push("/cuentaUsuario");
     }
   }
 };
