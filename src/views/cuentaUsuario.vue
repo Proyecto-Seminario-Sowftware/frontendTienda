@@ -51,8 +51,7 @@ export default {
   data() {
     return {
       productos: [],
-      mostrar: false,
-      usuario: { nombre: "" }
+      mostrar: false
     };
   },
   created() {

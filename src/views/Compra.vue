@@ -34,14 +34,41 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr v-for="(item, index) in compras" :key="index">
+            <th>{{item.compra[index].producto.nombre}}</th>
+            <td>{{item.compra[index].producto.precio}}</td>
+            <td>{{item.compra[index].cantidad}}</td>
+
+            <td>{{item.total}}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      compras: []
+    };
+  },
+  created() {
+    this.listarCompras();
+  },
+  methods: {
+    listarCompras() {
+      this.axios
+        .get("/mostraCompras")
+        .then(res => {
+          console.log(res.data);
+          this.compras = res.data;
+        })
+        .catch(e => {
+          console.log(e.response);
+        });
+    }
+  }
+};
+</script>
