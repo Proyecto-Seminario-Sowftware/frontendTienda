@@ -1,5 +1,28 @@
 <template>
   <div id="crearProducto">
+    <div class="container-fluid">
+      <!-- box-header -->
+      <header style="background: #c5c5c5;">
+        <img class="vuelogo" alt="Vue logo" src="img/logo.png" />
+
+        <nav>
+          <i id="menu-icon" class="fas fa-bars"></i>
+
+          <ul>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <router-link to="/cuentaUsuario">Regresar</router-link>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <router-link v-on:click="cerrarSesion()" to="/">Cerrar Sesión</router-link>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+          </ul>
+        </nav>
+      </header>
+      <!-- end box-header -->
+    </div>
     <div class="container main-container">
       <h1>Ingresa el nuevo producto</h1>
 
@@ -74,6 +97,11 @@ export default {
       this.axios.post("/nuevoProducto", formData);
       this.file = "";
       this.$router.push("/cuentaUsuario");
+    },
+    cerrarSesion: function(e) {
+      axios.get("/cerrarSesion").then(() => {
+        this.$router.push("/");
+      });
     },
     showAlert() {
       this.$swal({

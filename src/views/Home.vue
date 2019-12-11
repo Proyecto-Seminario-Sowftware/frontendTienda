@@ -3,27 +3,19 @@
     <div class="container-fluid">
       <!-- box-header -->
       <header>
-        <img class="vuelogo" alt="Vue logo" src="img/logo.png">
-        
+        <img class="vuelogo" alt="Vue logo" src="img/logo.png" />
+
         <nav>
           <i id="menu-icon" class="fas fa-bars"></i>
-          
+
           <ul>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <a href="#">Home</a>
+              <a href="/">Inicio</a>
             </li>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <a href="#">About</a>
-            </li>
-            <li style="list-style: none; display: inline"></li>
-            <li>
-              <a href="#">Work</a>
-            </li>
-            <li style="list-style: none; display: inline"></li>
-            <li>
-              <a href="#">Contact</a>
+              <router-link to="/iniciarSesion">Iniciar Sesion</router-link>
             </li>
             <li style="list-style: none; display: inline"></li>
           </ul>
@@ -47,9 +39,7 @@
       <div class="portfolio-div">
         <div class="portfolio">
           <!-- portfolio_filter -->
-          <div class="categories-grid wow fadeInLeft">
-            
-          </div>
+          <div class="categories-grid wow fadeInLeft"></div>
           <!-- portfolio_filter -->
 
           <!-- portfolio_container -->

@@ -1,5 +1,28 @@
 <template>
-  <div id="crearCuenta">
+  <div class="crearCuenta">
+    <div class="container-fluid">
+      <!-- box-header -->
+      <header style="background: #c5c5c5;">
+        <img class="vuelogo" alt="Vue logo" src="img/logo.png" />
+
+        <nav>
+          <i id="menu-icon" class="fas fa-bars"></i>
+
+          <ul>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <a href="/">Inicio</a>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <router-link to="/iniciarSesion">Iniciar Sesion</router-link>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+          </ul>
+        </nav>
+      </header>
+      <!-- end box-header -->
+    </div>
     <div class="container main-container">
       <div class="col-md-6">
         <!-- Formulario para crear un nuevo usuario -->

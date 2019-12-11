@@ -1,27 +1,27 @@
 <template>
-  <div id="cuentaUsuario">
-    <div class="main-container portfolio-inner clearfix">
-      <!-- portfolio div -->
-      <div class="portfolio-div">
-        <div class="portfolio">
-          <!-- portfolio_filter -->
-          <div class="categories-grid wow fadeInLeft">
-            <nav class="categories text-center">
-              <ul class="portfolio_filter">
-                <li>
-                  <router-link to="/crearProducto">Crear Producto</router-link>
-                </li>
-                <li>
-                  <a href v-on:click="cerrarSesion">Cerrar Sesión</a>
-                </li>
-                <li>
-                  <p>{{usuario.nombre}}</p>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
+  <div class="cuentaUsuario">
+    <div class="container-fluid">
+      <!-- box-header -->
+      <header style="background: #c5c5c5;">
+        <img class="vuelogo" alt="Vue logo" src="img/logo.png" />
+
+        <nav>
+          <i id="menu-icon" class="fas fa-bars"></i>
+
+          <ul>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <router-link to="/crearProducto">Crear Producto</router-link>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <router-link v-on:click="cerrarSesion()" to="/">Cerrar Sesión</router-link>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+          </ul>
+        </nav>
+      </header>
+      <!-- end box-header -->
     </div>
 
     <main>
@@ -32,7 +32,7 @@
             <p class="contenido">{{item.nombre}}</p>
             <p class="contenido">L. {{item.precio}}</p>
           </div>
-          <router-link v-bind:to="'/detalleProducto/'+ item._id">Ver</router-link>
+          <router-link v-bind:to="'/detalleProducto/'+ item._id" class="btnVer">Ver</router-link>
         </div>
       </div>
     </main>
