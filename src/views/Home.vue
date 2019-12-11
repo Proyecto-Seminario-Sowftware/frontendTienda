@@ -11,7 +11,7 @@
           <ul>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <a href="/">Inicio</a>
+              <router-link to="/">Inicio</router-link>
             </li>
             <li style="list-style: none; display: inline"></li>
             <li>

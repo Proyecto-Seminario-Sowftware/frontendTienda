@@ -34,6 +34,7 @@
             <div class="input-contact">
               <input
                 type="text"
+                id="nombre"
                 name="nombre"
                 placeholder="Escribe el nombre del producto"
                 v-model="producto.nombre"
@@ -43,23 +44,25 @@
             <div class="input-contact">
               <input
                 type="number"
+                id="precio"
                 name="precio"
                 placeholder="Escribe el precio del producto"
                 v-model="producto.precio"
               />
             </div>
-            <label for>Descripción</label>
-            <div>
-              <textarea name id cols="30" rows="10" v-model="producto.descripcion"></textarea>
-            </div>
-            <label for>Imagen:</label>
-            <div>
-              <input type="file" ref="imagen" name="imagen" @change="enviarImagen" />
-              <img :src="'/uploads/'+ file" class="perfil" />
 
-              <button v-on:click="showAlert" type="submit">Crear Producto</button>
+            <label for>Descripción:</label>
+            <div>
+              <textarea name id="descripcion" cols="30" rows="10" v-model="producto.descripcion"></textarea>
+            </div>
+
+            <div class="imagenProducto">
+              <label for>Imagen:</label>
+              <input class="Imagen" type="file" ref="imagen" name="imagen" @change="enviarImagen" />
+              <img :src="file" class="perfil" />
             </div>
           </div>
+          <button v-on:click="showAlert" type="submit">Crear Producto</button>
         </form>
       </div>
     </div>
@@ -81,19 +84,12 @@ export default {
     agregarProducto() {
       console.log(this.producto);
 
-      this.axios
-        .post("/nuevoProducto", this.producto)
-        .then(res => {
-          this.productos.push(res.data);
-          this.producto.nombre = "";
-          this.producto.precio = 0;
-          this.productos.descripcion = "";
-        })
-
-        .catch(e => {});
-
       const formData = new FormData();
       formData.append("imagen", this.file);
+      formData.append("nombre", this.producto.nombre);
+      formData.append("precio", this.producto.precio);
+      formData.append("descripcion", this.producto.descripcion);
+
       this.axios.post("/nuevoProducto", formData);
       this.file = "";
       this.$router.push("/cuentaUsuario");

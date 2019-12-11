@@ -15,7 +15,7 @@
             </li>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link v-on:click="cerrarSesion()" to="/">Cerrar Sesión</router-link>
+              <a href="/" v-on:click="cerrarSesion">Cerrar Sesión</a>
             </li>
             <li style="list-style: none; display: inline"></li>
           </ul>
