@@ -15,9 +15,12 @@
             </li>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link to="/iniciarSesion">Iniciar Sesion</router-link>
+              <a href="/iniciarSesion">Iniciar Sesion</a>
             </li>
             <li style="list-style: none; display: inline"></li>
+            <li>
+              <a href="/about">about</a>
+            </li>
           </ul>
         </nav>
       </header>

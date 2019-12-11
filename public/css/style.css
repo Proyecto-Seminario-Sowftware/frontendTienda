@@ -249,12 +249,10 @@ button {
   font-weight: 500;
   text-decoration: none;
 }
-
-/* Posionar la imagen */
-.imagenProducto input,
-image {
-  float: right;
+.table {
+  margin-top: 50px;
 }
+/* Posionar la imagen */
 
 /* Mostar imagenes */
 

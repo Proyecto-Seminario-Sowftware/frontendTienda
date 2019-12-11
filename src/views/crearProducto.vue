@@ -1,5 +1,5 @@
 <template>
-  <div id="crearProducto">
+  <div class="crearProducto">
     <div class="container-fluid">
       <!-- box-header -->
       <header style="background: #c5c5c5;">
@@ -9,6 +9,10 @@
           <i id="menu-icon" class="fas fa-bars"></i>
 
           <ul>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <router-link to="/compras">Compras</router-link>
+            </li>
             <li style="list-style: none; display: inline"></li>
             <li>
               <router-link to="/cuentaUsuario">Regresar</router-link>
@@ -56,8 +60,8 @@
               <textarea name id="descripcion" cols="30" rows="10" v-model="producto.descripcion"></textarea>
             </div>
 
+            <label for>Imagen:</label>
             <div class="imagenProducto">
-              <label for>Imagen:</label>
               <input class="Imagen" type="file" ref="imagen" name="imagen" @change="enviarImagen" />
               <img :src="file" class="perfil" />
             </div>

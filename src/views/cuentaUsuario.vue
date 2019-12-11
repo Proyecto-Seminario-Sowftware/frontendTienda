@@ -11,6 +11,11 @@
           <ul>
             <li style="list-style: none; display: inline"></li>
             <li>
+              <router-link to="/compras">Compras</router-link>
+            </li>
+
+            <li style="list-style: none; display: inline"></li>
+            <li>
               <router-link to="/crearProducto">Crear Producto</router-link>
             </li>
             <li style="list-style: none; display: inline"></li>
@@ -27,7 +32,6 @@
     <main>
       <div class="lista-producto contenedor">
         <div class="producto" v-for="(item, index) in productos" :key="index">
-          <img :src="item.imagen" alt="imagen" />
           <div class="texto">
             <p class="contenido">{{item.nombre}}</p>
             <p class="contenido">L. {{item.precio}}</p>
