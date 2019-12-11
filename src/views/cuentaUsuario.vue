@@ -76,21 +76,7 @@ export default {
         this.$router.push("/");
       });
     },
-    // Mostrar el usuario autenticado
-    mostrarUsuario: function() {
-      let self = this.axios
-        .get("/usuarioAutencidado")
-        .then(res => {
-          console.log(res);
-          self.$set(this, "nombre", res.data.usuario);
-        })
-        .catch(err => {
-          {
-            console.log(err);
-            router.push("/");
-          }
-        });
-    }
+    
   }
 };
 </script>

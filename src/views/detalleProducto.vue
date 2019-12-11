@@ -1,5 +1,34 @@
 <template>
-  <div id="detalleProducto">
+  <div class="detalleProducto">
+    <div class="container-fluid">
+      <!-- box-header -->
+      <header style="background: #c5c5c5;">
+        <img class="vuelogo" alt="Vue logo" src="/img/logo.png" />
+
+        <nav>
+          <i id="menu-icon" class="fas fa-bars"></i>
+
+          <ul>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <router-link to="/compras">Compras</router-link>
+            </li>
+
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <router-link to="/crearProducto">Crear Producto</router-link>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <a href="/" v-on:click="cerrarSesion">Cerrar Sesión</a>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+          </ul>
+        </nav>
+      </header>
+      <!-- end box-header -->
+    </div>
+
     <div class="container main-container">
       <h1>Descripción del producto</h1>
 
@@ -14,10 +43,12 @@
           <img :src="productoMostrar.imagen" alt="producto" />
 
           <div class="acciones">
-            <router-link v-bind:to="'/editarProducto/'+productoMostrar._id">Editar</router-link>
+            <router-link v-bind:to="'/editarProducto/'+productoMostrar._id" class="btnEditar">Editar</router-link>
           </div>
-          <button type="submit" @click="eliminarProducto(productoMostrar._id)">Eliminar</button>
-          <div></div>
+
+          <div>
+            <button type="submit" @click="eliminarProducto(productoMostrar._id)">Eliminar</button>
+          </div>
           <router-view />
         </form>
       </div>
@@ -62,6 +93,12 @@ export default {
         })
         .catch(e => {});
       this.$router.push("/cuentaUsuario");
+    },
+    // Metodo de cerrar
+    cerrarSesion: function(e) {
+      axios.get("/cerrarSesion").then(() => {
+        this.$router.push("/");
+      });
     }
   }
 };
