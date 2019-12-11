@@ -56,9 +56,9 @@ export default {
         .delete(`/eliminarProducto/${id}`)
         .then(res => {
           const index = this.producto.findIndex(
-            item => item._id === res.data._id
+            productoMostrar => productoMostrar._id === res.data._id
           );
-          this.producto.splice(index, 3);
+          this.producto.splice(index, 1);
         })
         .catch(e => {});
       this.$router.push("/cuentaUsuario");

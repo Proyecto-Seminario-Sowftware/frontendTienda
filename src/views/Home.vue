@@ -2,13 +2,32 @@
   <div class="home">
     <div class="container-fluid">
       <!-- box-header -->
-      <header class="box-header">
-        <div class="box-logo">
-          <a href="index.html">
-            <img src="/img/logo.png" width="80" alt="Logo" />
-          </a>
-        </div>
-        <!-- box-nav -->
+      <header>
+        <img class="vuelogo" alt="Vue logo" src="img/logo.png">
+        
+        <nav>
+          <i id="menu-icon" class="fas fa-bars"></i>
+          
+          <ul>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <a href="#">About</a>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <a href="#">Work</a>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+          </ul>
+        </nav>
       </header>
       <!-- end box-header -->
     </div>
@@ -29,34 +48,7 @@
         <div class="portfolio">
           <!-- portfolio_filter -->
           <div class="categories-grid wow fadeInLeft">
-            <nav class="categories text-center">
-              <ul class="portfolio_filter">
-                <li>
-                  <a href class="active" data-filter="*">All</a>
-                </li>
-                <li>
-                  <a href data-filter=".photography">Photography</a>
-                </li>
-                <li>
-                  <a href data-filter=".logo">Logo</a>
-                </li>
-                <li>
-                  <a href data-filter=".graphics">Graphics</a>
-                </li>
-                <li>
-                  <a href data-filter=".ads">Advertising</a>
-                </li>
-                <li>
-                  <a href data-filter=".fashion">Fashion</a>
-                </li>
-                <li>
-                  <router-link to="/about">ir a about</router-link>
-                </li>
-                <li>
-                  <router-link to="/iniciarSesion">Iniciar Sesión</router-link>
-                </li>
-              </ul>
-            </nav>
+            
           </div>
           <!-- portfolio_filter -->
 

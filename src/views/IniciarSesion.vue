@@ -1,5 +1,5 @@
 <template>
-  <div id="iniciarSesion">
+  <div class="iniciarSesion">
     <div class="container main-container">
       <div class="col-md-6">
         <form v-on:submit="login">
