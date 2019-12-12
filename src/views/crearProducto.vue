@@ -33,7 +33,20 @@
       <div class="col-md-6">
         <form @submit.prevent="agregarProducto()" enctype="multipart/form-data">
           <!-- Datos del form -->
+
           <div class="col-md-12">
+            <div class="imagenProducto">
+              <label for>Imagen:</label>
+              <input
+                class="Imagen"
+                type="file"
+                ref="imagen"
+                name="imagen"
+                @change="enviarImagen"
+                style="height:190px;"
+              />
+              <img src alt />
+            </div>
             <label for>Nombre del producto:</label>
             <div class="input-contact">
               <input
@@ -56,17 +69,13 @@
             </div>
 
             <label for>Descripción:</label>
-            <div>
-              <textarea name id="descripcion" cols="30" rows="10" v-model="producto.descripcion"></textarea>
+            <div class="textTarea" style="width: 0px;">
+              <textarea name id="descripcion" cols="30" rows="8" v-model="producto.descripcion"></textarea>
             </div>
-
-            <label for>Imagen:</label>
-            <div class="imagenProducto">
-              <input class="Imagen" type="file" ref="imagen" name="imagen" @change="enviarImagen" />
-              <img :src="file" class="perfil" />
+            <div>
+              <button v-on:click="showAlert" type="submit">Crear Producto</button>
             </div>
           </div>
-          <button v-on:click="showAlert" type="submit">Crear Producto</button>
         </form>
       </div>
     </div>

@@ -1,5 +1,33 @@
 <template>
   <div id="editarProducto">
+    <div class="container-fluid">
+      <!-- box-header -->
+      <header style="background: #c5c5c5;">
+        <img class="vuelogo" alt="Vue logo" src="/img/logo.png" />
+
+        <nav>
+          <i id="menu-icon" class="fas fa-bars"></i>
+
+          <ul>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <router-link to="/compras">Compras</router-link>
+            </li>
+
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <router-link to="/crearProducto">Crear Producto</router-link>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <a href="/" v-on:click="cerrarSesion">Cerrar Sesión</a>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+          </ul>
+        </nav>
+      </header>
+      <!-- end box-header -->
+    </div>
     <div class="container main-container">
       <h1>Editar Producto</h1>
 
@@ -7,6 +35,18 @@
         <form @submit.prevent="editar(productoEditar)" enctype="multipart/form-data">
           <!-- Datos del form -->
           <div class="col-md-12">
+            <div class="imagenProducto">
+              <label for>Imagen:</label>
+              <input
+                class="Imagen"
+                type="file"
+                ref="imagen"
+                name="imagen"
+                @change="enviarImagen"
+                style="height:190px;"
+              />
+              <img src alt />
+            </div>
             <label for>Nombre del producto:</label>
             <div class="input-contact">
               <input
@@ -26,14 +66,10 @@
               />
             </div>
             <label for>Descripción</label>
-            <div>
+            <div class="textTarea" style="width: 0px;">
               <textarea name id cols="30" rows="10" v-model="productoEditar.descripcion"></textarea>
             </div>
-            <label for>Imagen:</label>
-            <div>
-              <input type="file" ref="imagen" name="imagen" @change="enviarImagen" />
-              <img :src="'/uploads/'+ productoEditar.imagen" />
-            </div>
+
             <button v-on:click="showAlert" type="submit">Editar</button>
           </div>
         </form>
@@ -89,6 +125,12 @@ export default {
       this.$swal({
         type: "success",
         title: "Producto Editado"
+      });
+    },
+    // Metodo de cerrar
+    cerrarSesion: function(e) {
+      axios.get("/cerrarSesion").then(() => {
+        this.$router.push("/");
       });
     }
   }

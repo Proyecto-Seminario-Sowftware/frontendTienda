@@ -35,12 +35,12 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in compras" :key="index">
-            <th>{{item.compra[index].producto.nombre}}</th>
-            <td>{{item.compra[index].producto.precio}}</td>
-            <td>{{item.compra[index].cantidad}}</td>
-
+            <td>{{item.compra[index.nombre]}}</td>
+            <td>{{item.compra[index.precio]}}</td>
+            <td>{{item.compra[index.cantidad]}}</td>
             <td>{{item.total}}</td>
           </tr>
+
           <tr>
             <td></td>
             <td></td>
@@ -66,7 +66,7 @@ export default {
   methods: {
     listarCompras() {
       this.axios
-        .get("/mostraCompras")
+        .get("/mostrarCompras")
         .then(res => {
           console.log(res.data);
           this.compras = res.data;
@@ -74,6 +74,12 @@ export default {
         .catch(e => {
           console.log(e.response);
         });
+    },
+    // Metodo de cerrar
+    cerrarSesion: function(e) {
+      axios.get("/cerrarSesion").then(() => {
+        this.$router.push("/");
+      });
     }
   }
 };

@@ -34,21 +34,48 @@
 
       <div class="col-md-6">
         <form @submit.prevent="listarProducto()">
-          <br />
+          <div>
+            <img
+              src="https://www.maxmovil.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/c/o/comprar_samsung_galaxy_s10_negro.jpg"
+              alt="producto"
+              class="imagenProducto"
+            />
+          </div>
+
           <p>{{productoMostrar.nombre}}</p>
-          <br />
+
           <p>L. {{productoMostrar.precio}}</p>
-          <br />
+
           <p>{{productoMostrar.descripcion}}</p>
-          <img :src="productoMostrar.imagen" alt="producto" />
+
+          <div>
+            <form @submit.prevent="agregarCompra()">
+              <label for style="margin-right:20px;">Cantidad:</label>
+              <select name id="cantidad" v-model="compra.cantidad">
+                <option value>1</option>
+                <option value>2</option>
+                <option value>3</option>
+                <option value>4</option>
+                <option value>5</option>
+                <option value>6</option>
+                <option value>7</option>
+                <option value>8</option>
+                <option value>9</option>
+                <option value>10</option>
+              </select>
+            </form>
+          </div>
 
           <div class="acciones">
             <router-link v-bind:to="'/editarProducto/'+productoMostrar._id" class="btnEditar">Editar</router-link>
+            <button
+              type="submit"
+              @click="eliminarProducto(productoMostrar._id)"
+              style="margin-right: 20px;"
+            >Eliminar</button>
+            <button type="submit">Agregar</button>
           </div>
 
-          <div>
-            <button type="submit" @click="eliminarProducto(productoMostrar._id)">Eliminar</button>
-          </div>
           <router-view />
         </form>
       </div>
@@ -61,7 +88,11 @@ export default {
     return {
       producto: [],
       mostrar: false,
-      productoMostrar: {}
+      productoMostrar: {},
+
+      // Agregar un producto a comprar
+      compras: [],
+      compra: { cantidad: 0, idProducto: "" }
     };
   },
   created() {
@@ -99,6 +130,17 @@ export default {
       axios.get("/cerrarSesion").then(() => {
         this.$router.push("/");
       });
+    },
+
+    // Metodo para agregar una compra
+    agregarCompra() {
+      console.log(this.compra);
+
+      const formData = new FormData();
+      formData.append("cantidad", this.compra.cantidad);
+      var id = this.$route.params.id;
+
+      this.axios.post("/compra", formData);
     }
   }
 };
