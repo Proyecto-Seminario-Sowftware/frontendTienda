@@ -42,37 +42,44 @@
             />
           </div>
 
-          <p>{{productoMostrar.nombre}}</p>
+          <p>{{ productoMostrar.nombre }}</p>
 
-          <p>L. {{productoMostrar.precio}}</p>
+          <p>L. {{ productoMostrar.precio }}</p>
 
-          <p>{{productoMostrar.descripcion}}</p>
+          <p>{{ productoMostrar.descripcion }}</p>
 
           <div>
             <form @submit.prevent="agregarCompra()">
               <label for style="margin-right:20px;">Cantidad:</label>
-              <select name id="cantidad" v-model="compra.cantidad">
-                <option value>1</option>
-                <option value>2</option>
-                <option value>3</option>
-                <option value>4</option>
-                <option value>5</option>
-                <option value>6</option>
-                <option value>7</option>
-                <option value>8</option>
-                <option value>9</option>
-                <option value>10</option>
-              </select>
+              <div class="input-contact">
+                <input
+                  ref="cantidad"
+                  type="number"
+                  id="cantidad"
+                  name="cantidad"
+                  v-model="compra.cantidad"
+                />
+              </div>
+              <label for>Total</label>
+              <div class="input-contact">
+                <input ref="total" type="number" name="total" />
+              </div>
             </form>
           </div>
 
           <div class="acciones">
-            <router-link v-bind:to="'/editarProducto/'+productoMostrar._id" class="btnEditar">Editar</router-link>
+            <router-link
+              v-bind:to="'/editarProducto/' + productoMostrar._id"
+              class="btnEditar"
+              >Editar</router-link
+            >
             <button
               type="submit"
               @click="eliminarProducto(productoMostrar._id)"
               style="margin-right: 20px;"
-            >Eliminar</button>
+            >
+              Eliminar
+            </button>
             <button type="submit">Agregar</button>
           </div>
 
@@ -83,6 +90,7 @@
   </div>
 </template>
 <script>
+import { toASCII } from "punycode";
 export default {
   data() {
     return {
@@ -92,7 +100,7 @@ export default {
 
       // Agregar un producto a comprar
       compras: [],
-      compra: { cantidad: 0, idProducto: "" }
+      compra: { cantidad: 0, idProducto: "", idUsuario: "", total: 0 }
     };
   },
   created() {
@@ -135,12 +143,16 @@ export default {
     // Metodo para agregar una compra
     agregarCompra() {
       console.log(this.compra);
-
       const formData = new FormData();
-      formData.append("cantidad", this.compra.cantidad);
-      var id = this.$route.params.id;
-
-      this.axios.post("/compra", formData);
+      this.axios.post("/compra", this.compra, productoMostrar._id).then(res => {
+        this.compras.push(res.data);
+        this.$$router.push("/cuentaUsuario");
+      });
+    }
+  },
+  computed: {
+    totalValor: function() {
+      return productoMostrar.precio * compra.cantidad;
     }
   }
 };

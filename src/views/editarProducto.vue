@@ -32,7 +32,10 @@
       <h1>Editar Producto</h1>
 
       <div class="col-md-6">
-        <form @submit.prevent="editar(productoEditar)" enctype="multipart/form-data">
+        <form
+          @submit.prevent="editar(productoEditar)"
+          enctype="multipart/form-data"
+        >
           <!-- Datos del form -->
           <div class="col-md-12">
             <div class="imagenProducto">
@@ -67,7 +70,13 @@
             </div>
             <label for>Descripción</label>
             <div class="textTarea" style="width: 0px;">
-              <textarea name id cols="30" rows="10" v-model="productoEditar.descripcion"></textarea>
+              <textarea
+                name
+                id
+                cols="30"
+                rows="10"
+                v-model="productoEditar.descripcion"
+              ></textarea>
             </div>
 
             <button v-on:click="showAlert" type="submit">Editar</button>
@@ -136,5 +145,3 @@ export default {
   }
 };
 </script>
-
-
