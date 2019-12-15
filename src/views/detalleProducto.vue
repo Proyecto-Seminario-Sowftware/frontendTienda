@@ -11,16 +11,18 @@
           <ul>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link to="/compras">Compras</router-link>
+              <router-link to="/compras">
+                <i class="fas fa-cart-arrow-down" style="color: #000000;"></i>
+              </router-link>
+            </li>
+            <li style="list-style: none; display: inline"></li>
+            <li>
+              <router-link to="/cuentaUsuario" style="color: #000000;">Regresar</router-link>
             </li>
 
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link to="/crearProducto">Crear Producto</router-link>
-            </li>
-            <li style="list-style: none; display: inline"></li>
-            <li>
-              <a href="/" v-on:click="cerrarSesion">Cerrar Sesión</a>
+              <a href="/" v-on:click="cerrarSesion" style="color: #000000;">Cerrar Sesión</a>
             </li>
             <li style="list-style: none; display: inline"></li>
           </ul>
@@ -47,47 +49,43 @@
           <p>L. {{ productoMostrar.precio }}</p>
 
           <p>{{ productoMostrar.descripcion }}</p>
-
-          <div>
-            <form @submit.prevent="agregarCompra()">
-              <label for style="margin-right:20px;">Cantidad:</label>
-              <div class="input-contact">
-                <input
-                  ref="cantidad"
-                  type="number"
-                  id="cantidad"
-                  name="cantidad"
-                  v-model.number="compra.cantidad"
-                />
-              </div>
-              <label for>Total</label>
-              <div class="input-contact">
-                <input ref="total" type="number" name="total" v-model="totalValor" />
-              </div>
-            </form>
-          </div>
-
-          <div class="acciones">
-            <router-link
-              v-bind:to="'/editarProducto/' + productoMostrar._id"
-              class="btnEditar"
-            >Editar</router-link>
-            <button
-              type="submit"
-              @click="eliminarProducto(productoMostrar._id)"
-              style="margin-right: 20px;"
-            >Eliminar</button>
-            <button type="submit">Agregar</button>
-          </div>
-
-          <router-view />
         </form>
+        <div>
+          <!-- Formulario de agregar una compra -->
+          <form @submit.prevent="agregarCompra()">
+            <label for style="margin-right:20px;">Cantidad:</label>
+            <div class="input-contact">
+              <input
+                ref="cantidad"
+                type="number"
+                id="cantidad"
+                name="cantidad"
+                v-model="compra.cantidad"
+              />
+            </div>
+            <label for>Total</label>
+            <div class="input-contact">
+              <input id="total" ref="total" type="number" name="total" v-model="totalValor" />
+            </div>
+          </form>
+        </div>
+        <div class="acciones">
+          <!-- Boton de editar -->
+          <router-link v-bind:to="'/editarProducto/' + productoMostrar._id" class="btnEditar">Editar</router-link>
+          <!-- Boton de eliminar -->
+          <button
+            type="submit"
+            @click="eliminarProducto(productoMostrar._id)"
+            style="margin-right: 20px;"
+          >Eliminar</button>
+          <!-- Boton de agregar compra producto -->
+          <button v-on:click="showAlert" type="submit">Agregar</button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { toASCII } from "punycode";
 export default {
   data() {
     return {
@@ -98,7 +96,7 @@ export default {
 
       // Agregar un producto a comprar
       compras: [],
-      compra: { cantidad: 0, idProducto: "", idUsuario: "", total: 0 }
+      compra: { cantidad: 0, idProducto: "", total: 0 }
     };
   },
   created() {
@@ -140,11 +138,17 @@ export default {
 
     // Metodo para agregar una compra
     agregarCompra() {
-      console.log(this.compra);
-      const formData = new FormData();
-      this.axios.post("/compra", this.compra, productoMostrar._id).then(res => {
-        this.compras.push(res.data);
-        this.$$router.push("/cuentaUsuario");
+      var id = this.$route.params.id;
+      const data = new FormData();
+      data.append("cantidad", this.compra.cantidad);
+      data.append("total", this.totalValor);
+      this.axios.post("/compra", data);
+      this.$router.push("/cuentaUsuario");
+    },
+    showAlert() {
+      this.$swal({
+        type: "success",
+        title: "Tu producto ha sido agregado"
       });
     }
   },

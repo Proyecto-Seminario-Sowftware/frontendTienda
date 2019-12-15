@@ -11,11 +11,11 @@
           <ul>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link to="/cuentaUsuario">Regresar</router-link>
+              <router-link to="/cuentaUsuario" style="color: #000000;">Regresar</router-link>
             </li>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link v-on:click="cerrarSesion()" to="/">Cerrar Sesión</router-link>
+              <router-link v-on:click="cerrarSesion()" to="/" style="color: #000000;">Cerrar Sesión</router-link>
             </li>
             <li style="list-style: none; display: inline"></li>
           </ul>
@@ -38,7 +38,7 @@
             <td>{{item.compra[index.nombre]}}</td>
             <td>{{item.compra[index.precio]}}</td>
             <td>{{item.compra[index.cantidad]}}</td>
-            <td>{{item.total}}</td>
+            <td>L. {{item.total}}</td>
             <td></td>
           </tr>
 
@@ -46,7 +46,7 @@
             <td></td>
             <td></td>
             <td>Total:</td>
-            <td></td>
+            <td name="totalFinal">L. {{totalFinal}}</td>
           </tr>
         </tbody>
       </table>
@@ -58,7 +58,7 @@
 export default {
   data() {
     return {
-      compras: []
+      compras: {}
     };
   },
   created() {
@@ -84,12 +84,11 @@ export default {
     }
   },
   computed: {
-    total() {
-      return this.item.reduce((total, item) => {
-        return total + item.total;
+    totalFinal: function() {
+      return this.compras.reduce(function(sum, item) {
+        return sum + item.total;
       }, 0);
     }
-  },
-  computed: {}
+  }
 };
 </script>

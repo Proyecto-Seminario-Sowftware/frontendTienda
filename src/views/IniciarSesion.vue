@@ -11,11 +11,11 @@
           <ul>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <a href="/">Inicio</a>
+              <a href="/" style="color: #000000;">Inicio</a>
             </li>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link to="/iniciarSesion">Iniciar Sesion</router-link>
+              <router-link to="/iniciarSesion" style="color: #000000;">Iniciar Sesion</router-link>
             </li>
             <li style="list-style: none; display: inline"></li>
           </ul>

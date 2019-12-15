@@ -12,17 +12,17 @@
             <li style="list-style: none; display: inline"></li>
             <li>
               <router-link to="/compras">
-                <i class="fas fa-cart-arrow-down" style="font-size=1.5;"></i>
+                <i class="fas fa-cart-arrow-down" style="color: #000000;"></i>
               </router-link>
             </li>
 
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link to="/crearProducto">Crear Producto</router-link>
+              <router-link to="/crearProducto" style="color: #000000;">Crear Producto</router-link>
             </li>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <a href="/" v-on:click="cerrarSesion">Cerrar Sesión</a>
+              <a href="/" v-on:click="cerrarSesion" style="color: #000000;">Cerrar Sesión</a>
             </li>
             <li style="list-style: none; display: inline"></li>
           </ul>

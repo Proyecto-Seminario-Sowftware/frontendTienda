@@ -11,15 +11,11 @@
           <ul>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link to="/compras">Compras</router-link>
+              <router-link to="/cuentaUsuario" style="color: #000000;">Regresar</router-link>
             </li>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link to="/cuentaUsuario">Regresar</router-link>
-            </li>
-            <li style="list-style: none; display: inline"></li>
-            <li>
-              <router-link v-on:click="cerrarSesion()" to="/">Cerrar Sesión</router-link>
+              <router-link v-on:click="cerrarSesion()" to="/" style="color: #000000;">Cerrar Sesión</router-link>
             </li>
             <li style="list-style: none; display: inline"></li>
           </ul>
