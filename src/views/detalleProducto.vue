@@ -57,12 +57,12 @@
                   type="number"
                   id="cantidad"
                   name="cantidad"
-                  v-model="compra.cantidad"
+                  v-model.number="compra.cantidad"
                 />
               </div>
               <label for>Total</label>
               <div class="input-contact">
-                <input ref="total" type="number" name="total" />
+                <input ref="total" type="number" name="total" v-model="totalValor" />
               </div>
             </form>
           </div>
@@ -71,15 +71,12 @@
             <router-link
               v-bind:to="'/editarProducto/' + productoMostrar._id"
               class="btnEditar"
-              >Editar</router-link
-            >
+            >Editar</router-link>
             <button
               type="submit"
               @click="eliminarProducto(productoMostrar._id)"
               style="margin-right: 20px;"
-            >
-              Eliminar
-            </button>
+            >Eliminar</button>
             <button type="submit">Agregar</button>
           </div>
 
@@ -97,6 +94,7 @@ export default {
       producto: [],
       mostrar: false,
       productoMostrar: {},
+      cantidad: 0,
 
       // Agregar un producto a comprar
       compras: [],
@@ -152,7 +150,7 @@ export default {
   },
   computed: {
     totalValor: function() {
-      return productoMostrar.precio * compra.cantidad;
+      return Number(this.compra.cantidad) * Number(this.productoMostrar.precio);
     }
   }
 };

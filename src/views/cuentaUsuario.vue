@@ -11,7 +11,9 @@
           <ul>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link to="/compras">Compras</router-link>
+              <router-link to="/compras">
+                <i class="fas fa-cart-arrow-down" style="font-size=1.5;"></i>
+              </router-link>
             </li>
 
             <li style="list-style: none; display: inline"></li>
@@ -42,9 +44,7 @@
             <p class="contenido">{{ item.nombre }}</p>
             <p class="contenido">L. {{ item.precio }}</p>
           </div>
-          <router-link v-bind:to="'/detalleProducto/' + item._id" class="btnVer"
-            >Ver</router-link
-          >
+          <router-link v-bind:to="'/detalleProducto/' + item._id" class="btnVer">Ver</router-link>
         </div>
       </div>
     </main>

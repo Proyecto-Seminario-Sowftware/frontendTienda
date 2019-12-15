@@ -39,6 +39,7 @@
             <td>{{item.compra[index.precio]}}</td>
             <td>{{item.compra[index.cantidad]}}</td>
             <td>{{item.total}}</td>
+            <td></td>
           </tr>
 
           <tr>
@@ -81,6 +82,14 @@ export default {
         this.$router.push("/");
       });
     }
-  }
+  },
+  computed: {
+    total() {
+      return this.item.reduce((total, item) => {
+        return total + item.total;
+      }, 0);
+    }
+  },
+  computed: {}
 };
 </script>
