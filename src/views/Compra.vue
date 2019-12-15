@@ -35,9 +35,9 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in compras" :key="index">
-            <td>{{item.compra[index.nombre]}}</td>
-            <td>{{item.compra[index.precio]}}</td>
-            <td>{{item.compra[index.cantidad]}}</td>
+            <td>{{item.compra[0].producto.nombre}}</td>
+            <td>{{item.compra[0].producto.precio}}</td>
+            <td>{{item.compra[0].cantidad}}</td>
             <td>L. {{item.total}}</td>
             <td></td>
           </tr>
