@@ -26,7 +26,7 @@
 
     <div class="container main-container">
       <div class="col-md-6">
-        <form v-on:submit="login">
+        <form v-on:submit="login" class="loginForm">
           <div>
             <h1>Iniciar Sesión</h1>
           </div>

@@ -33,7 +33,7 @@ body {
   height: 100%;
   font-family: "Poppins", sans-serif;
   line-height: 1.8;
-  font-size: 1.3em;
+  font-size: 1.1em;
   color: #999;
 }
 
@@ -179,12 +179,19 @@ textarea {
     width: 95%;
   }
   textarea {
-    width: 100%;
+    width: 390px;
   }
   .imagenProducto {
     width: 10%;
   }
+  .loginForm {
+    width: 170%;
+  }
+  .userForm {
+    width: 170%;
+  }
 }
+
 /* -------------------------------- */
 
 h1 {
@@ -293,6 +300,7 @@ button {
 }
 
 .lista-producto {
+  margin-top: 120px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
@@ -316,7 +324,7 @@ button {
 
 .producto {
   background-color: #b8b8b6;
-  margin-top: 120px;
+  margin-top: 1px;
   padding: 1rem;
 }
 

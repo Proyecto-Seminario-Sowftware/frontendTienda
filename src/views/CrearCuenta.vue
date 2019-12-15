@@ -26,7 +26,7 @@
     <div class="container main-container">
       <div class="col-md-6">
         <!-- Formulario para crear un nuevo usuario -->
-        <form @submit.prevent="agregarUsuario()">
+        <form @submit.prevent="agregarUsuario()" class="userForm">
           <div>
             <h1>Crea Tu Cuenta</h1>
           </div>
