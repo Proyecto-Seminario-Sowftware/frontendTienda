@@ -34,7 +34,7 @@
     <main>
       <div class="lista-producto contenedor">
         <div class="producto" v-for="(item, index) in productos" :key="index">
-          <progressive-img :src="item.imagen" />
+          <img :src="item.imagen" alt />
 
           <!-- <img
             src="https://www.maxmovil.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/c/o/comprar_samsung_galaxy_s10_negro.jpg"
@@ -82,24 +82,6 @@ export default {
     cerrarSesion: function(e) {
       axios.get("/cerrarSesion").then(() => {
         this.$router.push("/");
-      });
-    },
-    // Mostrar la imagen de la api
-    getMoreInfo(step) {
-      this.imagenes = "";
-      axios({
-        method: "get",
-        url: "http://localhost:8000/api/mostrarProductos",
-        headers: {
-          "Content-type": "imagenes/jpeg"
-        },
-        params: {
-          id: step.id
-        }
-      }).then(response => {
-        this.imagenes = "data:imagenes/jpg;base64,".concat(
-          this.imagenes.concat(response.data)
-        );
       });
     }
   }

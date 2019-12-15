@@ -137,12 +137,14 @@ export default {
     },
 
     // Metodo para agregar una compra
-    agregarCompra() {
-      var id = this.$route.params.id;
-      const data = new FormData();
-      data.append("cantidad", this.compra.cantidad);
-      data.append("total", this.totalValor);
-      this.axios.post("/compra", data);
+    agregarCompra: function(obj) {
+      axios
+        .post("/compra", {
+          obj: this.compra
+        })
+        .then(function(response) {
+          console.log(response);
+        });
       this.$router.push("/cuentaUsuario");
     },
     showAlert() {

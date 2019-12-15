@@ -43,8 +43,9 @@
                 name="imagen"
                 @change="enviarImagen"
                 style="height:190px;"
+                :v-model="productoEditar.imagen"
               />
-              <img src alt />
+              <img :src="productoEditar.imagen" alt />
             </div>
             <label for>Nombre del producto:</label>
             <div class="input-contact">

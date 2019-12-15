@@ -40,8 +40,9 @@
                 name="imagen"
                 @change="enviarImagen"
                 style="height:190px;"
+                :v-model="producto.imagen"
               />
-              <img src alt />
+              <img :src="producto.imagen" alt />
             </div>
             <label for>Nombre del producto:</label>
             <div class="input-contact">
@@ -83,7 +84,7 @@ export default {
     return {
       productos: [],
       file: "",
-      producto: { nombre: "", precio: 0, descripcion: "" }
+      producto: { nombre: "", precio: 0, descripcion: "", imagen: "" }
     };
   },
   methods: {
