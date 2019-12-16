@@ -48,38 +48,30 @@
             />
           </div>
 
+          <p :v-model="compra.idProducto">{{ productoMostrar._id }}</p>
+
           <p>{{ productoMostrar.nombre }}</p>
 
           <p>L. {{ productoMostrar.precio }}</p>
 
           <p>{{ productoMostrar.descripcion }}</p>
+
+          <label for style="margin-right:20px;">Cantidad:</label>
+
+          <div class="input-contact">
+            <input
+              type="number"
+              id="cantidad"
+              name="cantidad"
+              v-model="compra.cantidad"
+            />
+          </div>
+          <label for>Total</label>
+          <div class="input-contact">
+            <input id="total" type="number" name="total" v-model="totalValor" />
+          </div>
         </form>
-        <div>
-          <!-- Formulario de agregar una compra -->
-          <form @submit.prevent="agregarCompra(compra)" v-if="agregar">
-            <label for style="margin-right:20px;">Cantidad:</label>
-            <div class="input-contact">
-              <input
-                ref="cantidad"
-                type="number"
-                id="cantidad"
-                name="cantidad"
-                v-model="compra.cantidad"
-              />
-            </div>
-            <label for>Total</label>
-            <div class="input-contact">
-              <input
-                id="total"
-                ref="total"
-                type="number"
-                name="total"
-                v-model="totalValor"
-                :v-model="compra.total"
-              />
-            </div>
-          </form>
-        </div>
+        <div></div>
         <div class="acciones">
           <!-- Boton de editar -->
           <router-link
@@ -96,7 +88,9 @@
             Eliminar
           </button>
           <!-- Boton de agregar compra producto -->
-          <button v-on:click="showAlert" type="submit">Agregar</button>
+          <button v-on:click="agregarCompra()" type="submit"
+            >Agregar</button
+          >
         </div>
       </div>
     </div>
@@ -106,14 +100,13 @@
 export default {
   data() {
     return {
-      agregar: true,
       producto: [],
       mostrar: false,
       productoMostrar: {},
-      cantidad: 0,
 
       // Agrgar un producto a comprar
-      compra: [{ cantidad: 0, idProducto: "" }]
+      compras: [],
+      compra: { idProducto: "", cantidad: 0, totalValor: 0 }
     };
   },
   created() {
@@ -154,10 +147,11 @@ export default {
     },
 
     // Metodo para agregar una compra
-    agregarCompra(item) {
-      this.axios("/compra", item).then(res => {
-        this.compra[0].unshift(res.data);
+    agregarCompra() {
+      this.axios.post("/compra", this.compra).then(res => {
+        this.compras.push(res.data);
       });
+      this.$router.push("/cuentaUsuario");
     },
     showAlert() {
       this.$swal({

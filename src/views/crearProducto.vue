@@ -11,11 +11,18 @@
           <ul>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link to="/cuentaUsuario" style="color: #000000;">Regresar</router-link>
+              <router-link to="/cuentaUsuario" style="color: #000000;"
+                >Regresar</router-link
+              >
             </li>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link v-on:click="cerrarSesion()" to="/" style="color: #000000;">Cerrar Sesión</router-link>
+              <router-link
+                v-on:click="cerrarSesion()"
+                to="/"
+                style="color: #000000;"
+                >Cerrar Sesión</router-link
+              >
             </li>
             <li style="list-style: none; display: inline"></li>
           </ul>
@@ -67,10 +74,18 @@
 
             <label for>Descripción:</label>
             <div class="textTarea" style="width: 0px;">
-              <textarea name id="descripcion" cols="30" rows="8" v-model="producto.descripcion"></textarea>
+              <textarea
+                name
+                id="descripcion"
+                cols="30"
+                rows="8"
+                v-model="producto.descripcion"
+              ></textarea>
             </div>
             <div>
-              <button v-on:click="showAlert" type="submit">Crear Producto</button>
+              <button v-on:click="showAlert" type="submit"
+                >Crear Producto</button
+              >
             </div>
           </div>
         </form>
