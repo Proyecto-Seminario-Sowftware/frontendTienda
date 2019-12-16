@@ -17,12 +17,16 @@
             </li>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link to="/cuentaUsuario" style="color: #000000;">Regresar</router-link>
+              <router-link to="/cuentaUsuario" style="color: #000000;"
+                >Regresar</router-link
+              >
             </li>
 
             <li style="list-style: none; display: inline"></li>
             <li>
-              <a href="/" v-on:click="cerrarSesion" style="color: #000000;">Cerrar Sesión</a>
+              <a href="/" v-on:click="cerrarSesion" style="color: #000000;"
+                >Cerrar Sesión</a
+              >
             </li>
             <li style="list-style: none; display: inline"></li>
           </ul>
@@ -52,7 +56,7 @@
         </form>
         <div>
           <!-- Formulario de agregar una compra -->
-          <form @submit.prevent="agregarCompra()">
+          <form @submit.prevent="agregarCompra(compra)" v-if="agregar">
             <label for style="margin-right:20px;">Cantidad:</label>
             <div class="input-contact">
               <input
@@ -65,19 +69,32 @@
             </div>
             <label for>Total</label>
             <div class="input-contact">
-              <input id="total" ref="total" type="number" name="total" v-model="totalValor" />
+              <input
+                id="total"
+                ref="total"
+                type="number"
+                name="total"
+                v-model="totalValor"
+                :v-model="compra.total"
+              />
             </div>
           </form>
         </div>
         <div class="acciones">
           <!-- Boton de editar -->
-          <router-link v-bind:to="'/editarProducto/' + productoMostrar._id" class="btnEditar">Editar</router-link>
+          <router-link
+            v-bind:to="'/editarProducto/' + productoMostrar._id"
+            class="btnEditar"
+            >Editar</router-link
+          >
           <!-- Boton de eliminar -->
           <button
             type="submit"
             @click="eliminarProducto(productoMostrar._id)"
             style="margin-right: 20px;"
-          >Eliminar</button>
+          >
+            Eliminar
+          </button>
           <!-- Boton de agregar compra producto -->
           <button v-on:click="showAlert" type="submit">Agregar</button>
         </div>
@@ -89,14 +106,14 @@
 export default {
   data() {
     return {
+      agregar: true,
       producto: [],
       mostrar: false,
       productoMostrar: {},
       cantidad: 0,
 
-      // Agregar un producto a comprar
-      compras: [],
-      compra: { cantidad: 0, idProducto: "", total: 0 }
+      // Agrgar un producto a comprar
+      compra: [{ cantidad: 0, idProducto: "" }]
     };
   },
   created() {
@@ -137,15 +154,10 @@ export default {
     },
 
     // Metodo para agregar una compra
-    agregarCompra: function(obj) {
-      axios
-        .post("/compra", {
-          obj: this.compra
-        })
-        .then(function(response) {
-          console.log(response);
-        });
-      this.$router.push("/cuentaUsuario");
+    agregarCompra(item) {
+      this.axios("/compra", item).then(res => {
+        this.compra[0].unshift(res.data);
+      });
     },
     showAlert() {
       this.$swal({

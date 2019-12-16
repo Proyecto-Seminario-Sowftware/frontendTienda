@@ -11,11 +11,18 @@
           <ul>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link to="/cuentaUsuario" style="color: #000000;">Regresar</router-link>
+              <router-link to="/cuentaUsuario" style="color: #000000;"
+                >Regresar</router-link
+              >
             </li>
             <li style="list-style: none; display: inline"></li>
             <li>
-              <router-link v-on:click="cerrarSesion()" to="/" style="color: #000000;">Cerrar Sesión</router-link>
+              <router-link
+                v-on:click="cerrarSesion()"
+                to="/"
+                style="color: #000000;"
+                >Cerrar Sesión</router-link
+              >
             </li>
             <li style="list-style: none; display: inline"></li>
           </ul>
@@ -31,22 +38,32 @@
             <th scope="col">Precio</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Total</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(item, index) in compras" :key="index">
-            <td>{{item.compra[0].producto.nombre}}</td>
-            <td>L. {{item.compra[0].producto.precio}}</td>
-            <td>{{item.compra[0].cantidad}}</td>
-            <td>L. {{item.total}}</td>
-            <td></td>
+            <td>{{ item.compra[0].producto.nombre }}</td>
+            <td>L. {{ item.compra[0].producto.precio }}</td>
+            <td>{{ item.compra[0].cantidad }}</td>
+            <td>L. {{ item.total }}</td>
+
+            <td>
+              <b-button
+                v-on:click="showAlert"
+                type="submit"
+                @click="eliminarCompra(item._id)"
+                >Eliminar</b-button
+              >
+            </td>
           </tr>
 
           <tr>
             <td></td>
             <td></td>
             <td>Total:</td>
-            <td name="totalFinal">L. {{totalFinal}}</td>
+            <td name="totalFinal">L. {{ totalFinal }}</td>
+            <td></td>
           </tr>
         </tbody>
       </table>
@@ -76,10 +93,30 @@ export default {
           console.log(e.response);
         });
     },
+    // Eliminar compra
+    // Metodo para eliminar el producto
+    eliminarCompra(id) {
+      this.axios
+        .delete(`/eliminarCompras/${id}`)
+        .then(res => {
+          const index = this.compras.findIndex(
+            compras => compras._id === res.data._id
+          );
+          this.producto.splice(index, 1);
+        })
+        .catch(e => {});
+      this.$router.push("/compras");
+    },
     // Metodo de cerrar
     cerrarSesion: function(e) {
       axios.get("/cerrarSesion").then(() => {
         this.$router.push("/");
+      });
+    },
+    showAlert() {
+      this.$swal({
+        type: "success",
+        title: "Compra Eliminada"
       });
     }
   },
