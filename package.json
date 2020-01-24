@@ -4,8 +4,9 @@
   "description": "Diseño Web usando VueJS",
   "private": true,
   "scripts": {
-    "start": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "start": "node ./server.js"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "@vue/cli-plugin-router": "^4.1.0",
     "@vue/cli-plugin-vuex": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
+    "nodemon": "^2.0.2",
     "vue-template-compiler": "^2.6.10"
   },
   "browserslist": [

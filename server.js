@@ -10,7 +10,9 @@ app.get("/.*/", function(req, res) {
   res.sendfile(__dirname + "/dist/index.html");
 });
 
+const host = "0.0.0.0";
+
 // Enviarle el puerto
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || host;
 app.listen(port);
 console.log("server started " + port);
