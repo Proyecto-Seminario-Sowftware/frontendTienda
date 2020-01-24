@@ -1,18 +1,14 @@
 // importar express
 const express = require("express");
+const serverStatic = require("serve-static");
 const path = require("path");
 
 // crear al app
 app = express();
 
-app.use(express.static(_dirname + "/dist"));
-app.get("/.*/", function(req, res) {
-  res.sendfile(__dirname + "/dist/index.html");
-});
+app.use("/", serverStatic(path.join(__dirname, "/dist")));
 
-const host = "0.0.0.0";
-
-// Enviarle el puerto
-const port = process.env.PORT || host;
+const port = process.env.PORT || 8080;
 app.listen(port);
-console.log("server started " + port);
+
+console.log("Escuchando en el puerto " + port);
